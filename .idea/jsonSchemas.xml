@@ -7,7 +7,7 @@
           <value>
             <SchemaInfo>
               <option name="name" value="tt environment config" />
-              <option name="relativePathToSchema" value="jar://$APPLICATION_PLUGINS_DIR$/tarantool-idea-plugin/lib/tarantool-idea-plugin-1.1.0.jar!/schemas/tt-config.json" />
+              <option name="relativePathToSchema" value="" />
               <option name="schemaVersion" value="JSON Schema 202,012" />
               <option name="applicationDefined" value="true" />
               <option name="patterns">

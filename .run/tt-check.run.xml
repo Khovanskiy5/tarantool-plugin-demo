@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="tt check app.lua" type="TarantoolTtRunConfiguration" folderName="tt">
+    <option name="command" value="check src/app.lua" />
+    <method v="2" />
+  </configuration>
+</component>

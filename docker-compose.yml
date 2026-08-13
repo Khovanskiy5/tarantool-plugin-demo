@@ -1,0 +1,18 @@
+# Демо режима запуска «Docker (tt в контейнере)»:
+# Settings → Tools → Tarantool → Режим запуска → Docker,
+# префикс команды: docker compose exec tarantool
+#
+# В образе должен быть tt — здесь используется официальный образ
+# tarantool/tt CLI поверх tarantool. Порты проброшены, поэтому
+# Database Tools подключаются как к локальному инстансу.
+services:
+  tarantool:
+    image: tarantool/tarantool:3.4
+    working_dir: /opt/app
+    volumes:
+      - ./:/opt/app
+    ports:
+      - "3311:3311"
+      - "3312:3312"
+      - "3315:3315"
+    command: sleep infinity

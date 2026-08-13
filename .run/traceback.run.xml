@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tarantool: кликабельный трейсбек" type="TarantoolRunConfiguration" factoryName="Tarantool" folderName="Tarantool">
+    <option name="scriptPath" value="$PROJECT_DIR$/scripts/traceback_demo.lua" />
+    <option name="workingDirectory" value="$PROJECT_DIR$" />
+    <option name="augmentLuaPath" value="true" />
+    <method v="2" />
+  </configuration>
+</component>

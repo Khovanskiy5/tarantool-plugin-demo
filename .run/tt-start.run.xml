@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="tt start" type="TarantoolTtRunConfiguration" folderName="tt">
+    <option name="command" value="start" />
+    <method v="2" />
+  </configuration>
+</component>

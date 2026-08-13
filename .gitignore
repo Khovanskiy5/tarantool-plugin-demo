@@ -1,0 +1,15 @@
+.rocks/
+var/
+!var/.keep
+bin/
+include/
+distfiles/
+templates/
+modules/
+.types/tarantool/generated/
+.idea/workspace.xml
+.idea/dataSources/
+.idea/dataSources.local.xml
+*.snap
+*.xlog
+*.vylog

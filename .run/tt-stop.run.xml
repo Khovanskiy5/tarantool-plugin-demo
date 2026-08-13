@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="tt stop -y" type="TarantoolTtRunConfiguration" folderName="tt">
+    <option name="command" value="stop -y" />
+    <method v="2" />
+  </configuration>
+</component>

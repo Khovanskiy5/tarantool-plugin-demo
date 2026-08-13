@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="tt log -f" type="TarantoolTtRunConfiguration" folderName="tt">
+    <option name="command" value="log -f" />
+    <method v="2" />
+  </configuration>
+</component>

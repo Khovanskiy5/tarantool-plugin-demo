@@ -1,0 +1,52 @@
+# Кластерная конфигурация Tarantool 3: роутер + репликасет из двух
+# инстансов. Автодополнение и валидация — по официальной JSON Schema
+# (схема «Tarantool cluster config» в статус-баре).
+#
+# По этому файлу плагин сам создаст источники данных в окне Database
+# (IDEA Ultimate): роутер и лидер репликасета; RO-реплика пропускается.
+credentials:
+  users:
+    client:
+      password: 'secret'
+      roles: [super]
+    replicator:
+      password: 'topsecret'
+      roles: [replication]
+
+iproto:
+  advertise:
+    peer:
+      login: replicator
+
+# Полный скан для SQL-запросов без индекса — чтобы просмотр таблиц
+# в Database Tools работал без SEQSCAN в каждом запросе.
+compat:
+  sql_seq_scan_default: 'old'
+
+groups:
+  storages:
+    replication:
+      failover: manual
+    replicasets:
+      storage-001:
+        leader: storage-001-a
+        instances:
+          storage-001-a:
+            iproto:
+              listen:
+                - uri: 'localhost:3311'
+          storage-001-b:
+            iproto:
+              listen:
+                - uri: 'localhost:3312'
+  routers:
+    replicasets:
+      router-001:
+        instances:
+          router-001-a:
+            iproto:
+              listen:
+                - uri: 'localhost:3315'
+
+app:
+  file: 'src/app.lua'

@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tarantool: hello.lua" type="TarantoolRunConfiguration" factoryName="Tarantool" folderName="Tarantool">
+    <option name="scriptPath" value="$PROJECT_DIR$/scripts/hello.lua" />
+    <option name="programArguments" value="--from-run-config" />
+    <option name="workingDirectory" value="$PROJECT_DIR$" />
+    <option name="augmentLuaPath" value="true" />
+    <method v="2" />
+  </configuration>
+</component>

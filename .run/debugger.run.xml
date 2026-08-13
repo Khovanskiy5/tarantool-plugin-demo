@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tarantool: встроенный отладчик (-d)" type="TarantoolRunConfiguration" factoryName="Tarantool" folderName="Tarantool">
+    <option name="scriptPath" value="$PROJECT_DIR$/scripts/debugger_demo.lua" />
+    <option name="workingDirectory" value="$PROJECT_DIR$" />
+    <option name="augmentLuaPath" value="true" />
+    <option name="useLuaDebugger" value="true" />
+    <method v="2" />
+  </configuration>
+</component>

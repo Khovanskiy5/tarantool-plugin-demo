@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="luatest: все тесты" type="TarantoolLuatestRunConfiguration" folderName="luatest">
+    <option name="testPath" value="./test" />
+    <option name="luatestPath" value=".rocks/bin/luatest" />
+    <option name="programArguments" value="-v" />
+    <method v="2" />
+  </configuration>
+</component>

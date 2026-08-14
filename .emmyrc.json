@@ -1,18 +1,24 @@
 {
   "$schema": "https://raw.githubusercontent.com/EmmyLuaLs/emmylua-analyzer-rust/refs/heads/main/crates/emmylua_code_analysis/resources/schema.json",
+  "diagnostics": {
+    "disable": [
+      "need-check-nil",
+      "await-in-sync"
+    ]
+  },
   "runtime": {
     "version": "LuaJIT"
   },
   "workspace": {
+    "ignoreDir": [
+      "var",
+      ".idea"
+    ],
     "library": [
       ".types/tarantool/manual",
       ".types/tarantool/generated",
       ".types/tarantool/bundled/Library",
       ".types/tarantool/bundled/Rocks"
-    ],
-    "ignoreDir": [
-      "var",
-      ".idea"
     ]
   }
 }

@@ -3,6 +3,7 @@
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="tarantool-plugin-demo-storage-001-a@3311" uuid="dafe8e18-8ac8-44be-b75a-0680daba08b8">
       <driver-ref>java.sql.Driver</driver-ref>
+      <configured-by-url>true</configured-by-url>
       <jdbc-driver>com.khovanskiy.tarantool.jdbcshim.ShimDriver</jdbc-driver>
       <jdbc-url>jdbc:tarantool://localhost:3311?user=client&amp;password=secret</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>

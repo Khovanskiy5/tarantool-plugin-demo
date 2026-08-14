@@ -6,7 +6,9 @@
   "workspace": {
     "library": [
       ".types/tarantool/manual",
-      ".types/tarantool/generated"
+      ".types/tarantool/generated",
+      ".types/tarantool/bundled/Library",
+      ".types/tarantool/bundled/Rocks"
     ],
     "ignoreDir": [
       "var",

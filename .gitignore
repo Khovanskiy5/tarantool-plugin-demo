@@ -7,6 +7,7 @@ distfiles/
 templates/
 modules/
 .types/tarantool/generated/
+.types/tarantool/bundled/
 .idea/workspace.xml
 .idea/dataSources/
 .idea/dataSources.local.xml

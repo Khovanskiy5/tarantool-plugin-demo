@@ -1,13 +1,5 @@
 -- Точка входа приложения: config.yaml → app.file. Выполняется на каждом
 -- инстансе кластера после применения конфигурации.
---
--- Строка ниже — для Emmy-отладчика (Tools → Настроить Emmy-отладчик
--- Tarantool). Без переменной окружения TARANTOOL_DEBUG она не делает
--- ничего, поэтому безопасна в постоянном коде.
-local ok_dbg, emmy = pcall(require, 'emmy_debug')
-if ok_dbg then
-    emmy.attach_if_requested()
-end
 
 -- tt запускает инстанс с рабочим каталогом приложения, но подстрахуемся:
 -- добавим src/ приложения в пути поиска модулей независимо от cwd.
@@ -20,6 +12,17 @@ if app_dir then
     }, ';')
 end
 
+-- Графический отладчик. Включается секцией app.cfg.debugger в config.yaml;
+-- при выключенной секции обе строки не делают ничего, поэтому безопасны
+-- в постоянном коде. Второй вызов — старый способ через TARANTOOL_DEBUG.
+local debug_setup = require('debug_setup')
+debug_setup.attach_if_configured()
+debug_setup.attach_if_requested()
+
+-- Глобальная функция D() для панели Watches отладчика: разворачивает
+-- таплы и прочие cdata Tarantool в обычные таблицы.
+require('inspect').install()
+
 local fiber = require('fiber')
 local log = require('log').new('demo')
 
@@ -30,8 +33,19 @@ log.info('инстанс %s (репликасет %s) запускается', i
 
 -- Спейсы создаёт только лидер хранилища; роутер остаётся «пустым»,
 -- а реплика получает данные по репликации.
-if replicaset:match('^storage') and not box.info.ro then
+local is_storage_leader = replicaset:match('^storage') ~= nil and not box.info.ro
+if is_storage_leader then
     require('model.schema').bootstrap()
+
+    -- Триггер журналирования вешаем только на лидере: на реплике он
+    -- сработал бы ещё раз на реплицированных строках.
+    require('model.audit').install()
+
+    -- Фоновые обработчики заказов — файберы order-worker-1 и order-worker-2.
+    require('model.queue').start(2)
+
+    -- Функции, доступные клиенту по iproto: conn:call('api.checkout', …).
+    rawset(_G, 'api', require('api'))
 end
 
 -- Фоновый файбер-«пульс»: живые строки в логах для панели Tarantool

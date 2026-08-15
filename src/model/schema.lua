@@ -49,6 +49,33 @@ function schema.bootstrap()
 
         log.info('спейс orders создан и наполнен демо-данными')
     end)
+
+    -- Журнал изменений заказов: сюда пишет триггер on_replace (model.audit).
+    box.once('schema:v1-order-events', function()
+        box.schema.sequence.create('order_events_seq', { if_not_exists = true })
+
+        local events = box.schema.space.create('order_events', { if_not_exists = true })
+        events:format({
+            { name = 'id', type = 'unsigned' },
+            { name = 'order_id', type = 'unsigned' },
+            { name = 'operation', type = 'string' },
+            { name = 'actor', type = 'string' },
+            { name = 'delta', type = 'number' },
+            { name = 'at', type = 'datetime' },
+        })
+        events:create_index('primary', {
+            parts = { 'id' },
+            sequence = 'order_events_seq',
+            if_not_exists = true,
+        })
+        events:create_index('by_order', {
+            parts = { 'order_id' },
+            unique = false,
+            if_not_exists = true,
+        })
+
+        log.info('спейс order_events создан')
+    end)
 end
 
 return schema

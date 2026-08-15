@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tarantool: нагрузка для отладки" type="TarantoolRunConfiguration" factoryName="Tarantool" folderName="Tarantool">
+    <option name="scriptPath" value="$PROJECT_DIR$/scripts/debug_traffic.lua" />
+    <option name="programArguments" value="all 3" />
+    <option name="workingDirectory" value="$PROJECT_DIR$" />
+    <option name="augmentLuaPath" value="true" />
+    <method v="2" />
+  </configuration>
+</component>

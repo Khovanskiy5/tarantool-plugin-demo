@@ -323,9 +323,13 @@ D(box.error.last())
 на `scripts/fiber_loops.lua` — там ровно это: фоновый файбер
 `background-loop` и главный `main-loop`, оба с `fiber.yield()`.
 
-1. Точки останова на строках 20 (`iteration = iteration + 1`)
-   и 34 (`main_loop_iteration = main_loop_iteration + 1`).
+1. Точки останова на строках 25 (`iteration = iteration + 1`)
+   и 40 (`main_loop_iteration = main_loop_iteration + 1`).
 2. Конфигурация **«Tarantool: два цикла с yield»** → кнопка **Debug**.
+
+Если точка не ставится — на строке есть комментарий: EmmyLua2 такие
+строки запрещает (`LuaLineBreakpointType` отбрасывает строку, где среди
+элементов встречается комментарий). Переносите комментарий строкой выше.
 
 Останов приходит то в один цикл, то в другой: Resume в фоновом файбере
 отдаёт управление главному, и наоборот. В Variables видно `iteration`

@@ -4,7 +4,11 @@
 -- а не привязан к корутине.
 --
 -- Запуск: конфигурация «Tarantool: два цикла с yield» → кнопка Debug.
--- Точки: строка 20 (тело фонового файбера) и строка 34 (тело главного).
+-- Точки останова: строка 25 (тело фонового файбера) и строка 40 (тело
+-- главного). Комментарии намеренно вынесены на отдельные строки:
+-- EmmyLua2 не даёт поставить точку останова на строке, где есть
+-- комментарий, — правило его LuaLineBreakpointType.
+--
 -- Рабочий каталог конфигурации — var/, чтобы снимки box.cfg{} не сорили
 -- в корне проекта.
 local fiber = require('fiber')
@@ -17,7 +21,8 @@ fiber.create(function()
     local iteration = 0
 
     while true do
-        iteration = iteration + 1 -- точка останова: файбер background-loop
+        -- точка останова: файбер background-loop
+        iteration = iteration + 1
         fiber.yield()
     end
 end)
@@ -31,7 +36,8 @@ fiber.name('main-loop')
 local main_loop_iteration = 0
 
 while true do
-    main_loop_iteration = main_loop_iteration + 1 -- точка останова: главный файбер
+    -- точка останова: главный файбер
+    main_loop_iteration = main_loop_iteration + 1
     local ok, err = pcall(main_iteration)
     assert(ok, err)
 end

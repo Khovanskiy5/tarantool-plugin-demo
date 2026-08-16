@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tarantool: два цикла с yield" type="TarantoolRunConfiguration" factoryName="Tarantool" folderName="Tarantool">
+    <option name="scriptPath" value="$PROJECT_DIR$/scripts/fiber_loops.lua" />
+    <!-- box.cfg{} без параметров пишет снимки в рабочий каталог: var/ -->
+    <option name="workingDirectory" value="$PROJECT_DIR$/var" />
+    <option name="augmentLuaPath" value="true" />
+    <option name="useEmmyDebugger" value="true" />
+    <method v="2" />
+  </configuration>
+</component>
